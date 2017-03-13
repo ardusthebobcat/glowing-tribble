@@ -8,7 +8,7 @@
 	<hr>
 	<ul>
 		{% for project in projects %}
-			<li>{{ project }} - {{ project.text }}</li>
+			<li><a href='/projects/{{project.id}}'>{{ project }} - {{ project.text }}</a></li>
 		{% endfor %}
 	</ul>
 

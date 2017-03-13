@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	Issues View page
+	<hr>
+	{{ issue.i_type }}{{ issue }}
+	<br>
+	<hr>
+	{% for key,value in issue.get_keys.items %}
+		{{key}} - {{value}}	<br>
+	{% endfor %}
+
+</body>
+</html>
