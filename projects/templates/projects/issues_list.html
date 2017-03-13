@@ -10,7 +10,7 @@
 	<br><br>
 	Issues: <br>
 	{% for issue in issues %}
-		<li>{{ issue.i_type }}{{ issue }}</li>
+		<li><a href="/projects/{{project.id}}/issues/{{issue.id}}">{{ issue.i_type }}{{ issue }}</a></li>
 	{% endfor%}
 </body>
 </html>

@@ -1,7 +1,10 @@
+from django import template
 from django.db import models
 from django.utils import timezone
 from django.forms import ModelForm
 import pdb
+
+register = template.Library()
 
 # Global vars - use very sparingly
 new_type = 0
@@ -14,7 +17,7 @@ issue_type_choices = (
 	(bug_type,'(BUG)')
 )
 
-# Create your models here.
+##### Models
 class Project(models.Model):
 	title = models.CharField(max_length=200)
 	text = models.TextField()
@@ -24,6 +27,7 @@ class Project(models.Model):
 	def __str__(self):
 		return self.title
 
+	@property
 	def label(self):
 		return self.label
 
@@ -58,16 +62,21 @@ class Issue(models.Model):
 
 	def get_keys(self):
 		r = self.__dict__
-		print(r)
 		return r
 
-	def issue_value_lookup(issue, key):
-		pdb.set_trace()
-		r = Issue.objects.get(issue)(key)
-		return r
+	# @register.inclusion_tag('projects/issue_view_template.html')
+	# def load_issues_template(input):
+	# 	issue = Issue.object.get(id=input)
+	# 	return {'issue': issue}
 
 
+##### ModelForms
 class IssueForm(ModelForm):
 	class Meta:
 		model = Issue
 		fields = ['title','status','issue_type','project']
+
+class ProjectForm(ModelForm):
+	class Meta:
+		model = Project
+		fields = ['title','text']

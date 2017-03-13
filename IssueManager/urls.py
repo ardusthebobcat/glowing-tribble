@@ -17,8 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^projects/([0-9])', include('issues.urls')),
-    url(r'', include('projects.urls'))
+    url(r'^admin/', admin.site.urls), #all the admin side
+    url(r'^projects/([0-9])', include('issues.urls')), #if project/:id, send to project[:id] issues list
+    url(r'', include('projects.urls')) #project list is index/ empty url
 ]
 	
