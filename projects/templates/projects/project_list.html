@@ -7,9 +7,9 @@
 	<b>Running projects!</b>
 	<hr>
 	<ul>
-		<li>Project 1</li>
-		<li>Project 2</li>
-		<li>Project 3</li>
+		{% for project in projects %}
+			<li>{{ project }} - {{ project.text }}</li>
+		{% endfor %}
 	</ul>
 
 </body>
